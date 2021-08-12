@@ -2,7 +2,6 @@
 
 function onInIt() {
 
-    console.log('hi');
     renderCanvas()
     renderMeme()
 }

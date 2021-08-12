@@ -10,15 +10,20 @@
 </head>
 
 <body onload="onInIt()">
-    <h1></h1>
 
 
 
-    <!-- GALLERY -->
 
-    <header class=" header flex">
-        <h1>Ultimate Meme Generator! </h1>
-        <button onclick="toggleSections()"></button>
+    <!-- <div onclick="toggleMenu(this)" class="screen"></div> -->
+    <header class="main-header">
+        <div class="header-container  flex space-between align-center">
+            <div class="logo white">memegen</div>
+            <ul class="main-nav clean-list flex">
+                <li><a onclick="toggleSections()" class="btns clean-decoration white justify-center align-items flex" href="#">Return</a></li>
+                <li><a onclick="onClickNavBtn(this)" class="btns clean-decoration white justify-center align-items flex" href="#">About</a></li>
+            </ul>
+            <!-- <button onclick="toggleMenu(this)" class="manu-btn">☰</button> -->
+        </div>
     </header>
 
 
@@ -71,6 +76,13 @@
             </div>
         </section>
     </main>
+
+
+    <footer class="main-footer flex text-center justify-center">
+        <div class="logo">Blogin</div>
+        <small>&#xa9;all rights reserved to tomer morad</small>
+    </footer>
+
 
 
     <!-- <footer class="main-footer flex text-center justify-center">
