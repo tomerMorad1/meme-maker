@@ -3,26 +3,24 @@
 var gMeme;
 var gXPos;
 
-
-
 gMeme = {
-    selectedImgId: 6,
-    selectedLineIdx: 0,
-    lines: [{
-        txt: '',
-        size: 30,
-        width: 30,
-        align: 'left',
-        color: 'red',
-        fill: 'white',
-        font: 'impact',
-        x: gXPos,
-        y: 50
+        selectedImgId: 6,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: '',
+            size: 30,
+            width: 30,
+            align: 'left',
+            color: 'red',
+            fill: 'white',
+            font: 'impact',
+            x: 150,
+            y: 50
 
-    }]
-}
-if (isMobile()) gXPos = 120;
-else gXPos = 200;
+        }]
+    }
+    // if (isMobile()) gXPos = 120;
+    // else gXPos = 200;
 
 function setLineWidth(width, line) {
     line.width = width;

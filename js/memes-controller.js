@@ -12,8 +12,8 @@ function renderCanvas() {
     markLine()
 }
 
-function isMobile() {
-    const screenWidth = document.body.clientWidth;
+function isMobile(screenWidth) {
+    var screenWidth = document.body.clientWidth;
     return screenWidth < 550;
 }
 
