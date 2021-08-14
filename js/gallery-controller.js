@@ -1,12 +1,9 @@
 'use strict'
 
 function onInIt() {
-
     renderCanvas()
     renderMeme()
-
     addEventListener('resize', resizeCanvas)
-
 }
 
 

@@ -19,6 +19,10 @@ gMeme = {
     }]
 }
 
+function setLineWidth(width, line) {
+    line.width = width;
+}
+
 function getLine() {
     return gMeme.lines[gMeme.selectedLineIdx];
 }

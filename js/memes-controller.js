@@ -43,6 +43,7 @@ function onSetTxt(val) {
     renderCanvas();
     setTxt();
     changeInput()
+    markLine()
 }
 
 function changeInput() {
@@ -61,13 +62,14 @@ function setTxt() {
     img.src = `meme-img/${meme.selectedImgId}.jpg`
     img.onload = () => {
         textLines.forEach((line) => {
-            drawText(line.txt, line.size, line.align, line.color, line.fill, line.font, line.x, line.y);
+            drawText(line, line.txt, line.size, line.align, line.color, line.fill, line.font, line.x, line.y);
         })
     }
 }
 
-function drawText(txt, size, align, color, fill, font, x, y) {
-
+function drawText(line, txt, size, align, color, fill, font, x, y) {
+    var txtWidth = gCtx.measureText(line.txt).width;
+    setLineWidth(txtWidth, line);
     gCtx.lineWidth = 1;
     gCtx.font = ` ${size}px ${font}`;
     gCtx.textAlign = align;
@@ -77,11 +79,9 @@ function drawText(txt, size, align, color, fill, font, x, y) {
     gCtx.strokeText(txt, x, y);
 }
 
-function getTxtWidth() {
-    var currTxt = getCurrTxt()
-    document.querySelector('.switch-line-btn').value = currTxt;
-    var txt = gCtx.measureText(currTxt);
-}
+
+
+
 
 
 function onChangeFontSize(condition) {
@@ -152,7 +152,7 @@ function drawRect() {
     // var txt = gCtx.measureText(currTxt);
 
     gCtx.beginPath()
-    gCtx.rect(line.x - 10, line.y - line.size, line.width + 20, line.size + 10);
+    gCtx.rect(line.x - 100, line.y - line.size, line.width + 20, line.size + 10);
     gCtx.strokeStyle = 'black'
     gCtx.stroke()
 }
