@@ -55,9 +55,9 @@ function getMeme() {
 function creatLine() {
     var yPos;
 
-    var currTxt = getCurrTxt()
-    document.querySelector('.switch-line-btn').value = currTxt;
-    var txt = gCtx.measureText(currTxt);
+    // var currTxt = getCurrTxt()
+    // document.querySelector('.switch-line-btn').value = currTxt;
+    // var txt = gCtx.measureText(currTxt);
 
     if (gMeme.lines.length === 0) yPos = 50;
     else if (gMeme.lines.length === 1) yPos = 400;
@@ -68,7 +68,7 @@ function creatLine() {
     gMeme.lines.push({
         txt: '',
         size: 30,
-        width: txt.width,
+        width: 30,
         align: 'center',
         color: 'red',
         fill: 'white',
@@ -76,7 +76,6 @@ function creatLine() {
         x: 250,
         y: yPos
     })
-    console.log('gMeme.lines', gMeme.lines);
 }
 
 

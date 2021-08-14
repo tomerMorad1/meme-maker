@@ -14,15 +14,16 @@
 
 
 
-    <!-- <div onclick="toggleMenu(this)" class="screen"></div> -->
+    <div onclick="toggleMenu()" class="screen"></div>
     <header class="main-header">
         <div class="header-container  flex space-between align-center">
             <div class="logo white">memegen</div>
             <ul class="main-nav clean-list flex">
-                <li><a onclick="toggleSections()" class="btns clean-decoration white justify-center align-items flex" href="#">Return</a></li>
-                <li><a onclick="onClickNavBtn(this)" class="btns clean-decoration white justify-center align-items flex" href="#">About</a></li>
+                <li><a onclick="toggleSections()" class="btns clean-decoration white  align-items flex" href="#">Gallery</a></li>
+                <li><a onclick="toggleSections()" class="btns clean-decoration white  align-items flex" href="#">my Meme</a></li>
+                <li><a onclick="onClickNavBtn()" class="btns clean-decoration white  align-items flex" href="#">About</a></li>
             </ul>
-            <!-- <button onclick="toggleMenu(this)" class="manu-btn">☰</button> -->
+            <button onclick="toggleMenu()" class="manu-btn">☰</button>
         </div>
     </header>
 
@@ -34,9 +35,9 @@
     <!-- MEMES -->
 
     <main class="none">
-        <section class="meme-editor container flex space-between">
+        <section class="meme-editor container flex center">
             <div class="canvas-container">
-                <canvas height="500" width="500"></canvas>
+                <canvas width="500" height="500"></canvas>
             </div>
             <div class="control-panel-container flex column align-center">
                 <input type="text" name="text-edit" placeholder="Enter Text..." oninput="onSetTxt(this.value)">
@@ -79,8 +80,8 @@
 
 
     <footer class="main-footer flex text-center justify-center">
-        <div class="logo">Blogin</div>
-        <small>&#xa9;all rights reserved to tomer morad</small>
+        <div class="logo">memegen</div>
+        <small>&#xa9;all rights reserved</small>
     </footer>
 
 

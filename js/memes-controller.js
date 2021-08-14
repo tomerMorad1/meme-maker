@@ -10,6 +10,20 @@ function renderCanvas() {
 }
 
 
+function resizeCanvas() {
+
+    var elContainer = document.querySelector('.canvas-container');
+
+    gCanvas.width = elContainer.offsetWidth - 20
+    gCanvas.height = elContainer.offsetWidth - 20
+
+
+
+    renderCanvas()
+}
+
+
+
 function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
 }
@@ -23,14 +37,6 @@ function drawImg() {
     }
 }
 
-function toggleSections() {
-    var elContainer = document.querySelector('.meme-container')
-    var elMain = document.querySelector('main')
-
-    elContainer.classList.toggle('none');
-    elContainer.classList.toggle('grid');
-    elMain.classList.toggle('none');
-}
 
 function onSetTxt(val) {
     getTxt(val);

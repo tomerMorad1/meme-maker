@@ -4,8 +4,27 @@ function onInIt() {
 
     renderCanvas()
     renderMeme()
+
+    addEventListener('resize', resizeCanvas)
+
 }
 
+
+function toggleSections() {
+    var elContainer = document.querySelector('.meme-container')
+    var elMain = document.querySelector('main')
+
+    elContainer.classList.toggle('none');
+    elContainer.classList.toggle('grid');
+    elMain.classList.toggle('none');
+
+    resizeCanvas();
+    renderCanvas();
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}
 
 function renderMeme() {
     var imgHTML = ''
@@ -21,4 +40,6 @@ function renderMeme() {
 
 function onMemeSelect(img) {
     getImgById(img)
+    resizeCanvas();
+
 }
