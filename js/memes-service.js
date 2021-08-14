@@ -19,7 +19,6 @@ gMeme = {
     }]
 }
 
-
 function getLine() {
     return gMeme.lines[gMeme.selectedLineIdx];
 }
@@ -29,8 +28,6 @@ function getTxt(val) {
     if (!gMeme.lines[gMeme.selectedLineIdx]) createLine();
     gMeme.lines[currLineIdx].txt = val;
 }
-
-
 
 function getImgById(img) {
     gMeme.selectedImgId = img;
@@ -55,15 +52,10 @@ function getMeme() {
 function creatLine() {
     var yPos;
 
-    // var currTxt = getCurrTxt()
-    // document.querySelector('.switch-line-btn').value = currTxt;
-    // var txt = gCtx.measureText(currTxt);
-
     if (gMeme.lines.length === 0) yPos = 50;
     else if (gMeme.lines.length === 1) yPos = 400;
     else if (gMeme.lines.length === 2) yPos = 250;
     else return;
-
 
     gMeme.lines.push({
         txt: '',
@@ -101,7 +93,6 @@ function getCurrTxt() {
     return gMeme.lines[gMeme.selectedLineIdx].txt
 }
 
-
 function removeLine() {
     if (!gMeme.lines.length) return;
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
@@ -112,11 +103,9 @@ function removeLine() {
     gMeme.selectedLineIdx--
 }
 
-
 function changeAlign(px) {
     gMeme.lines[gMeme.selectedLineIdx].x = px
 }
-
 
 function ChangeTxtFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font

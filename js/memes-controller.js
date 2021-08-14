@@ -42,7 +42,14 @@ function onSetTxt(val) {
     getTxt(val);
     renderCanvas();
     setTxt();
+    changeInput()
+}
 
+function changeInput() {
+    var elInput = document.querySelector('[name="text-edit"]')
+    var meme = getMeme()
+    var txt = meme.lines[meme.selectedLineIdx].txt;
+    elInput.value = txt;
 }
 
 function setTxt() {
@@ -60,6 +67,7 @@ function setTxt() {
 }
 
 function drawText(txt, size, align, color, fill, font, x, y) {
+
     gCtx.lineWidth = 1;
     gCtx.font = ` ${size}px ${font}`;
     gCtx.textAlign = align;
@@ -67,6 +75,12 @@ function drawText(txt, size, align, color, fill, font, x, y) {
     gCtx.fillStyle = fill;
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
+}
+
+function getTxtWidth() {
+    var currTxt = getCurrTxt()
+    document.querySelector('.switch-line-btn').value = currTxt;
+    var txt = gCtx.measureText(currTxt);
 }
 
 
@@ -116,11 +130,11 @@ function onChangeText() {
 
 }
 
-
 function onSwitchLine() {
     changeLine();
     markLine()
     setTxt();
+    changeInput()
 }
 
 function onRemoveLine() {
@@ -132,13 +146,13 @@ function onRemoveLine() {
 
 function drawRect() {
     var line = getLine()
-
+    if (!line) return;
     // var currTxt = getCurrTxt()
     // document.querySelector('.switch-line-btn').value = currTxt;
     // var txt = gCtx.measureText(currTxt);
 
     gCtx.beginPath()
-    gCtx.rect(line.x - 25, line.y - line.size, line.width + 20, line.size + 10);
+    gCtx.rect(line.x - 10, line.y - line.size, line.width + 20, line.size + 10);
     gCtx.strokeStyle = 'black'
     gCtx.stroke()
 }
