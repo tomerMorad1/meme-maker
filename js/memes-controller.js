@@ -13,7 +13,8 @@ function renderCanvas() {
 }
 
 function isMobile() {
-    if (window.width <= 550) return true;
+    const screenWidth = document.body.clientWidth;
+    return screenWidth < 550;
 }
 
 function resizeCanvas() {

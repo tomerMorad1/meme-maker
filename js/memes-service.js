@@ -1,8 +1,11 @@
 'use strict'
 
 var gMeme;
-gMeme = {
+var gXPos;
 
+
+
+gMeme = {
     selectedImgId: 6,
     selectedLineIdx: 0,
     lines: [{
@@ -13,11 +16,13 @@ gMeme = {
         color: 'red',
         fill: 'white',
         font: 'impact',
-        x: 200,
+        x: gXPos,
         y: 50
 
     }]
 }
+if (isMobile()) gXPos = 120;
+else gXPos = 200;
 
 function setLineWidth(width, line) {
     line.width = width;
@@ -55,25 +60,26 @@ function getMeme() {
 
 function creatLine() {
     var yPos;
-    var xPos;
+    // var xPos;
 
     if (isMobile()) {
-        if (gmem.lines.length === 0) {
+        // console.log('im small');
+        if (gMeme.lines.length === 0) {
             yPos = 50;
-            xPos = 150;
-        } else if (gmem.lines.length === 1) {
-            yPos = 50;
-            xPos = 150;
-        } else if (gmem.lines.length === 2) {
-            yPos = 50;
-            xPos = 120;
+        } else if (gMeme.lines.length === 1) {
+            yPos = 120;
+        } else if (gMeme.lines.length === 2) {
+            yPos = 250;
         }
-    }
+        gXPos = 120;
 
-    if (gMeme.lines.length === 0) yPos = 50;
-    else if (gMeme.lines.length === 1) yPos = 400;
-    else if (gMeme.lines.length === 2) yPos = 250;
-    else return;
+    } else {
+        if (gMeme.lines.length === 0) yPos = 50;
+        else if (gMeme.lines.length === 1) yPos = 400;
+        else if (gMeme.lines.length === 2) yPos = 250;
+        else return;
+        gXPos = 200;
+    }
 
     gMeme.lines.push({
         txt: '',
@@ -83,7 +89,7 @@ function creatLine() {
         color: 'red',
         fill: 'white',
         font: 'impact',
-        x: xPos,
+        x: gXPos,
         y: yPos
     })
 }
