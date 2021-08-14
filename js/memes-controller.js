@@ -77,6 +77,9 @@ function drawText(line, txt, size, align, color, fill, font, x, y) {
     gCtx.textAlign = align;
     gCtx.strokeStyle = color;
     gCtx.fillStyle = fill;
+
+    if (isMobile()) x = 120;
+
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
 }
@@ -128,6 +131,8 @@ function onRemoveLine() {
 
 function drawRect() {
     var line = getLine()
+    console.log('line', line.x);
+
     if (!line) return;
 
     gCtx.beginPath()
