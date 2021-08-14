@@ -13,12 +13,8 @@ function renderCanvas() {
 function resizeCanvas() {
 
     var elContainer = document.querySelector('.canvas-container');
-
     gCanvas.width = elContainer.offsetWidth - 20
     gCanvas.height = elContainer.offsetWidth - 20
-
-
-
     renderCanvas()
 }
 
@@ -79,11 +75,6 @@ function drawText(line, txt, size, align, color, fill, font, x, y) {
     gCtx.strokeText(txt, x, y);
 }
 
-
-
-
-
-
 function onChangeFontSize(condition) {
     // console.log('condition', condition);
     if (condition === 'increase') changeFontSize(+2);
@@ -94,7 +85,6 @@ function onChangeFontSize(condition) {
     setTxt()
 }
 
-
 function onChangePos(direction) {
     // console.log('direction', direction);
     if (direction === 'up') changePos(-10);
@@ -104,7 +94,6 @@ function onChangePos(direction) {
     renderCanvas()
     setTxt()
 }
-
 
 function onRemoveLine() {
     markLine()
@@ -147,12 +136,9 @@ function onRemoveLine() {
 function drawRect() {
     var line = getLine()
     if (!line) return;
-    // var currTxt = getCurrTxt()
-    // document.querySelector('.switch-line-btn').value = currTxt;
-    // var txt = gCtx.measureText(currTxt);
 
     gCtx.beginPath()
-    gCtx.rect(line.x - 100, line.y - line.size, line.width + 20, line.size + 10);
+    gCtx.rect(line.x - 10, line.y - line.size, line.width + 20, line.size + 10);
     gCtx.strokeStyle = 'black'
     gCtx.stroke()
 }

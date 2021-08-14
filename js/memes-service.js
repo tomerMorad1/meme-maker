@@ -9,7 +9,7 @@ gMeme = {
         txt: '',
         size: 30,
         width: 30,
-        align: 'center',
+        align: 'left',
         color: 'red',
         fill: 'white',
         font: 'impact',
