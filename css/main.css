@@ -22,6 +22,11 @@
                 font-family: palette;
                 src: url(../font/PaletteMosaic-Regular.ttf)
             }
+            
+            @font-face {
+                font-family: modak;
+                src: url(../font/Modak-Regular.ttf)
+            }
             /* FONT AWESOME */
             
             @font-face {
@@ -35,6 +40,10 @@
             
             .far.fa-bars::before {
                 content: "\f0c9";
+            }
+            
+            .modak {
+                font-family: modak;
             }
             
             .impact {
@@ -60,8 +69,6 @@
             .palette {
                 font-family: palette;
             }
-            
-            main {}
             /* HEADER */
             
             .main-header {
@@ -79,6 +86,40 @@
                 height: 50px;
                 padding: 14px;
                 color: rgb(14, 13, 13);
+            }
+            
+            .about-modal {
+                background-color: #e8eaefe0;
+                color: #959c9c;
+                font-size: 1.25rem;
+                height: 50vh;
+                top: 0;
+                width: 50%;
+                position: fixed;
+                box-shadow: 2px 1px 16px #19a59ff0;
+                transform: translate(-102%, -102%);
+                transition: transform .6s;
+                text-align: center;
+                padding: 3.666em;
+            }
+            
+            body.modal-open .about-modal {
+                transform: translate(0, 0);
+            }
+            
+            .btn-screen {
+                position: fixed;
+                inset: 0;
+                background-color: rgb(0 0 0/ 50%);
+                display: none;
+            }
+            
+            body.modal-open .btn-screen {
+                display: block;
+            }
+            
+            .about-modal .logo {
+                font-size: 3.125rem;
             }
             /* MEME SECTION */
             /* MAIN */
@@ -184,8 +225,17 @@
                 padding-top: 50px;
             }
             
+            .logo {
+                font-size: 30px;
+                color: #19a59f;
+            }
+            
             footer .logo {
                 margin: 0 auto;
+            }
+            
+            span {
+                color: #383b42c9;
             }
             
             small {
@@ -344,6 +394,9 @@
                 }
                 .manu-btn {
                     display: block;
+                }
+                .about-modal {
+                    width: 100%;
                 }
             }
             /* SMALL */

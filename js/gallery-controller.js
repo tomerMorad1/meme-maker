@@ -26,6 +26,11 @@ function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
 
+function toggleModal() {
+    document.body.classList.toggle('modal-open');
+    document.body.classList.toggle('menu-open');
+}
+
 function renderMeme() {
     var imgHTML = ''
     for (var i = 1; i <= 18; i++) {

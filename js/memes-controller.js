@@ -41,7 +41,6 @@ function drawImg() {
 function onSetTxt(val) {
     getTxt(val);
     renderCanvas();
-    // drawImg()
     setTxt();
 
 }
