@@ -13,7 +13,7 @@ gMeme = {
         color: 'red',
         fill: 'white',
         font: 'impact',
-        x: 250,
+        x: 200,
         y: 50
 
     }]
@@ -55,6 +55,20 @@ function getMeme() {
 
 function creatLine() {
     var yPos;
+    var xPos;
+
+    if (isMobile()) {
+        if (gmem.lines.length === 0) {
+            yPos = 50;
+            xPos = 150;
+        } else if (gmem.lines.length === 1) {
+            yPos = 50;
+            xPos = 150;
+        } else if (gmem.lines.length === 2) {
+            yPos = 50;
+            xPos = 120;
+        }
+    }
 
     if (gMeme.lines.length === 0) yPos = 50;
     else if (gMeme.lines.length === 1) yPos = 400;
@@ -65,11 +79,11 @@ function creatLine() {
         txt: '',
         size: 30,
         width: 30,
-        align: 'center',
+        align: 'left',
         color: 'red',
         fill: 'white',
         font: 'impact',
-        x: 250,
+        x: xPos,
         y: yPos
     })
 }

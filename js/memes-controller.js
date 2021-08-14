@@ -94,11 +94,7 @@ function onChangePos(direction) {
     renderCanvas()
 }
 
-function onRemoveLine() {
-    // clearCanvas()
-    renderCanvas()
-        // clearInput()
-}
+
 
 function clearInput() {
     var elInput = document.querySelector('[name="text-edit"]')
@@ -108,13 +104,12 @@ function clearInput() {
 function onAddLine() {
     creatLine();
     changeLine();
-    markLine()
+    markLine();
     clearInput();
 }
 
 function onChangeText() {
     changeTxt()
-
 }
 
 function onSwitchLine() {
@@ -128,7 +123,6 @@ function onRemoveLine() {
     removeLine();
     clearInput();
     renderCanvas();
-    setTxt();
 }
 
 function drawRect() {
@@ -146,11 +140,10 @@ function markLine(width) {
 }
 
 function onChangeAlign(align) {
-    if (align === 'left') changeAlign(100)
-    if (align === 'center') changeAlign(250)
-    if (align === 'right') changeAlign(400)
+    if (align === 'left') changeAlign(50)
+    if (align === 'center') changeAlign(200)
+    if (align === 'right') changeAlign(300)
     renderCanvas()
-    setTxt()
 }
 
 function onChangeTxtFont(font) {
@@ -162,11 +155,9 @@ function onChangeTxtFont(font) {
 function onChangeTxtStroke(color) {
     changeTxtStroke(color)
     renderCanvas()
-    setTxt()
 }
 
 function onChangeTxtColor(color) {
     changeTxtColor(color)
     renderCanvas()
-    setTxt()
 }
