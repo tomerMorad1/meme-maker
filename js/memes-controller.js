@@ -7,8 +7,14 @@ function renderCanvas() {
     gCanvas = document.querySelector('canvas');
     gCtx = gCanvas.getContext('2d');
     drawImg()
+    setTxt();
+    changeInput()
+    markLine()
 }
 
+function isMobile() {
+    if (window.width <= 550) return true;
+}
 
 function resizeCanvas() {
 
@@ -37,9 +43,8 @@ function drawImg() {
 function onSetTxt(val) {
     getTxt(val);
     renderCanvas();
-    setTxt();
-    changeInput()
-    markLine()
+
+
 }
 
 function changeInput() {
@@ -79,27 +84,20 @@ function onChangeFontSize(condition) {
     // console.log('condition', condition);
     if (condition === 'increase') changeFontSize(+2);
     else changeFontSize(-2);
-    setTxt()
-    clearCanvas()
     renderCanvas()
-    setTxt()
 }
 
 function onChangePos(direction) {
     // console.log('direction', direction);
     if (direction === 'up') changePos(-10);
     else changePos(+10);
-    setTxt()
-    clearCanvas()
     renderCanvas()
-    setTxt()
 }
 
 function onRemoveLine() {
-    markLine()
-    clearCanvas()
+    // clearCanvas()
     renderCanvas()
-    clearInput()
+        // clearInput()
 }
 
 function clearInput() {
