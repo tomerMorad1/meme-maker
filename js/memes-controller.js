@@ -4,17 +4,11 @@ var gCanvas;
 var gCtx;
 
 function renderCanvas() {
-    gCanvas = document.querySelector('canvas');
-    gCtx = gCanvas.getContext('2d');
     drawImg()
     setTxt();
     changeInput()
-    markLine()
-}
-
-function isMobile(screenWidth) {
-    var screenWidth = document.body.clientWidth;
-    return screenWidth < 550;
+    gCanvas = document.querySelector('canvas');
+    gCtx = gCanvas.getContext('2d');
 }
 
 function resizeCanvas() {
@@ -24,8 +18,6 @@ function resizeCanvas() {
     gCanvas.height = elContainer.offsetWidth - 20
     renderCanvas()
 }
-
-
 
 function clearCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
@@ -40,12 +32,10 @@ function drawImg() {
     }
 }
 
-
 function onSetTxt(val) {
     getTxt(val);
     renderCanvas();
-
-
+    markLine()
 }
 
 function changeInput() {
@@ -77,9 +67,6 @@ function drawText(line, txt, size, align, color, fill, font, x, y) {
     gCtx.textAlign = align;
     gCtx.strokeStyle = color;
     gCtx.fillStyle = fill;
-
-    if (isMobile()) x = 120;
-
     gCtx.fillText(txt, x, y);
     gCtx.strokeText(txt, x, y);
 }
@@ -89,6 +76,8 @@ function onChangeFontSize(condition) {
     if (condition === 'increase') changeFontSize(+2);
     else changeFontSize(-2);
     renderCanvas()
+
+
 }
 
 function onChangePos(direction) {
@@ -98,11 +87,10 @@ function onChangePos(direction) {
     renderCanvas()
 }
 
-
-
 function clearInput() {
     var elInput = document.querySelector('[name="text-edit"]')
     elInput.value = '';
+    elInput.focus();
 }
 
 function onAddLine() {
@@ -119,6 +107,7 @@ function onChangeText() {
 function onSwitchLine() {
     changeLine();
     markLine()
+    renderCanvas()
     setTxt();
     changeInput()
 }
@@ -131,13 +120,12 @@ function onRemoveLine() {
 
 function drawRect() {
     var line = getLine()
-    console.log('line', line.x);
-
     if (!line) return;
 
+    gCtx.lineWidth = 3;
     gCtx.beginPath()
     gCtx.rect(line.x - 10, line.y - line.size, line.width + 20, line.size + 10);
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = 'white'
     gCtx.stroke()
 }
 
@@ -146,10 +134,18 @@ function markLine(width) {
 }
 
 function onChangeAlign(align) {
-    if (align === 'left') changeAlign(50)
-    if (align === 'center') changeAlign(200)
-    if (align === 'right') changeAlign(300)
+    if (isMobile()) {
+        if (align === 'left') changeAlign(50)
+        if (align === 'center') changeAlign(120)
+        if (align === 'right') changeAlign(200)
+    } else {
+        if (align === 'left') changeAlign(50)
+        if (align === 'center') changeAlign(200)
+        if (align === 'right') changeAlign(300)
+    }
     renderCanvas()
+    markLine()
+
 }
 
 function onChangeTxtFont(font) {

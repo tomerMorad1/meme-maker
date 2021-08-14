@@ -6,18 +6,25 @@ function onInIt() {
     addEventListener('resize', resizeCanvas)
 }
 
+function toggleSections(section) {
+    var elGallery = document.querySelector('.meme-container')
+    var elMeme = document.querySelector('main')
 
-function toggleSections() {
-    var elContainer = document.querySelector('.meme-container')
-    var elMain = document.querySelector('main')
+    if (section === 'meme') {
+        elGallery.classList.add('none');
+        elMeme.classList.remove('none');
+        elGallery.classList.remove('grid');
+    } else {
+        elMeme.classList.add('none');
+        elGallery.classList.remove('none');
+        elGallery.classList.add('grid');
 
-    elContainer.classList.toggle('none');
-    elContainer.classList.toggle('grid');
-    elMain.classList.toggle('none');
-
+    }
     resizeCanvas();
     renderCanvas();
 }
+
+
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
@@ -25,7 +32,8 @@ function toggleMenu() {
 
 function toggleModal() {
     document.body.classList.toggle('modal-open');
-    document.body.classList.toggle('menu-open');
+    document.body.classList.remove('menu-open');
+
 }
 
 function renderMeme() {

@@ -27,20 +27,6 @@
                 font-family: modak;
                 src: url(../font/Modak-Regular.ttf)
             }
-            /* FONT AWESOME */
-            
-            @font-face {
-                font-family: regular;
-                src: url("../font/awesome/fa-regular-400.ttf")
-            }
-            
-            .far::before {
-                font-family: regular;
-            }
-            
-            .far.fa-bars::before {
-                content: "\f0c9";
-            }
             
             .modak {
                 font-family: modak;
@@ -94,7 +80,7 @@
                 font-size: 1.25rem;
                 height: 50vh;
                 top: 0;
-                width: 50%;
+                width: 70%;
                 position: fixed;
                 box-shadow: 2px 1px 16px #19a59ff0;
                 transform: translate(-102%, -102%);
@@ -408,6 +394,9 @@
             @MEDIA (min-width:950PX) {
                 .control-panel-container {
                     height: 75vh;
+                }
+                .about-modal {
+                    width: 50%;
                 }
             }
             /* MEDIUM */
