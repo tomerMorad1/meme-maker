@@ -62,7 +62,6 @@ function creatLine() {
     var yPos;
 
     if (isMobile()) {
-        // console.log('im small');
         if (gMeme.lines.length === 0) yPos = 50;
         else if (gMeme.lines.length === 1) yPos = 140;
         else if (gMeme.lines.length === 2) yPos = 250;
@@ -115,7 +114,7 @@ function removeLine() {
     if (!gMeme.lines.length) return;
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     if (!gMeme.selectedLineIdx) {
-        creatLine()
+        // creatLine()
         return;
     }
     gMeme.selectedLineIdx--

@@ -3,20 +3,28 @@
 var gCanvas;
 var gCtx;
 
-function renderCanvas() {
-    drawImg()
-    setTxt();
-    changeInput()
+function onInIt() {
     gCanvas = document.querySelector('canvas');
     gCtx = gCanvas.getContext('2d');
+    renderMeme()
+    addEventListener('resize', resizeCanvas)
+
+}
+
+function renderCanvas() {
+    gCtx.save();
+    drawImg();
+    setTxt();
+    changeInput();
 }
 
 function resizeCanvas() {
-
     var elContainer = document.querySelector('.canvas-container');
+
     gCanvas.width = elContainer.offsetWidth - 20
     gCanvas.height = elContainer.offsetWidth - 20
-    renderCanvas()
+
+    drawImg();
 }
 
 function clearCanvas() {
@@ -35,7 +43,6 @@ function drawImg() {
 function onSetTxt(val) {
     getTxt(val);
     renderCanvas();
-    markLine()
 }
 
 function changeInput() {
@@ -50,17 +57,17 @@ function setTxt() {
     var img = new Image();
     const textLines = meme.lines;
 
-    // console.log('textLines', textLines);
     img.src = `meme-img/${meme.selectedImgId}.jpg`
     img.onload = () => {
         textLines.forEach((line) => {
+            markLine();
             drawText(line, line.txt, line.size, line.align, line.color, line.fill, line.font, line.x, line.y);
         })
     }
 }
 
 function drawText(line, txt, size, align, color, fill, font, x, y) {
-    var txtWidth = gCtx.measureText(line.txt).width;
+    var txtWidth = gCtx.measureText(line.txt).width + 10;
     setLineWidth(txtWidth, line);
     gCtx.lineWidth = 1;
     gCtx.font = ` ${size}px ${font}`;
@@ -72,7 +79,6 @@ function drawText(line, txt, size, align, color, fill, font, x, y) {
 }
 
 function onChangeFontSize(condition) {
-    // console.log('condition', condition);
     if (condition === 'increase') changeFontSize(+2);
     else changeFontSize(-2);
     renderCanvas()
@@ -81,7 +87,6 @@ function onChangeFontSize(condition) {
 }
 
 function onChangePos(direction) {
-    // console.log('direction', direction);
     if (direction === 'up') changePos(-10);
     else changePos(+10);
     renderCanvas()
@@ -106,9 +111,7 @@ function onChangeText() {
 
 function onSwitchLine() {
     changeLine();
-    markLine()
     renderCanvas()
-    setTxt();
     changeInput()
 }
 
@@ -118,9 +121,10 @@ function onRemoveLine() {
     renderCanvas();
 }
 
-function drawRect() {
-    var line = getLine()
+function markLine() {
+    const line = getLine()
     if (!line) return;
+    // console.log('line', line);
 
     gCtx.lineWidth = 3;
     gCtx.beginPath()
@@ -129,9 +133,7 @@ function drawRect() {
     gCtx.stroke()
 }
 
-function markLine(width) {
-    drawRect(width)
-}
+
 
 function onChangeAlign(align) {
     if (isMobile()) {
@@ -143,15 +145,12 @@ function onChangeAlign(align) {
         if (align === 'center') changeAlign(200)
         if (align === 'right') changeAlign(300)
     }
-    renderCanvas()
-    markLine()
-
+    renderCanvas();
 }
 
 function onChangeTxtFont(font) {
     ChangeTxtFont(font);
     renderCanvas()
-    setTxt()
 }
 
 function onChangeTxtStroke(color) {

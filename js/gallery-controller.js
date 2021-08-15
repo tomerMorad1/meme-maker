@@ -1,10 +1,6 @@
 'use strict'
 
-function onInIt() {
-    renderCanvas()
-    renderMeme()
-    addEventListener('resize', resizeCanvas)
-}
+
 
 function toggleSections(section) {
     var elGallery = document.querySelector('.meme-container')
