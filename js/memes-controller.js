@@ -2,13 +2,85 @@
 
 var gCanvas;
 var gCtx;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
+var gStartPos;
+var gIsChosen = false;
 
 function onInIt() {
     gCanvas = document.querySelector('canvas');
     gCtx = gCanvas.getContext('2d');
     renderMeme()
     addEventListener('resize', resizeCanvas)
+    addListeners()
+}
 
+function addListeners() {
+    addMouseListeners();
+    addTouchListeners();
+}
+
+function addMouseListeners() {
+    gCanvas.addEventListener('mousemove', onMove)
+    gCanvas.addEventListener('mousedown', onDown)
+    gCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+    gCanvas.addEventListener('touchmove', onMove)
+    gCanvas.addEventListener('touchstart', onDown)
+    gCanvas.addEventListener('touchend', onUp)
+}
+
+function onDown(ev) {
+
+
+    gIsChosen = true;
+    const pos = getEvPos(ev);
+
+    if (!isLineClicked(pos)) return;
+    setLineDrag(true);
+    gStartPos = pos;
+    document.querySelector('canvas').style.cursor = 'grabbing';
+    changeInput();
+    renderCanvas();
+}
+
+function onMove(ev) {
+    if (!gIsChosen) return;
+
+    const pos = getEvPos(ev);
+    const line = getChosenLine(pos);
+    if (!line) return;
+    if (line.isDrag) {
+        const pos = getEvPos(ev)
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+        moveLine(dx, dy)
+        gStartPos = pos;
+        renderCanvas()
+    }
+}
+
+function onUp() {
+    gIsChosen = false;
+    setLineDrag(false);
+    document.querySelector('canvas').style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+    var pos = {
+        x: ev.offsetX,
+        y: ev.offsetY
+    }
+    if (gTouchEvs.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+        }
+    }
+    return pos
 }
 
 function renderCanvas() {

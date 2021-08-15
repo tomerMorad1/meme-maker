@@ -22,6 +22,8 @@ gMeme = {
 
     }]
 }
+var gChosenLine = gMeme.lines[0];
+
 
 function setLineWidth(width, line) {
     line.width = width;
@@ -114,7 +116,7 @@ function removeLine() {
     if (!gMeme.lines.length) return;
     gMeme.lines.splice(gMeme.selectedLineIdx, 1);
     if (!gMeme.selectedLineIdx) {
-        // creatLine()
+        creatLine()
         return;
     }
     gMeme.selectedLineIdx--
@@ -134,4 +136,44 @@ function changeTxtStroke(color) {
 
 function changeTxtColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].fill = color;
+}
+
+function isLineClicked(clickedPos) {
+    const clickedLine = getChosenLine(clickedPos);
+    gChosenLine = clickedLine;
+    return clickedLine;
+}
+
+
+function getChosenLine(clickedPos) {
+    if (gMeme.lines.length === 1) {
+        gChosenLine = gMeme.lines[0];
+        return gChosenLine;
+    }
+
+    const lines = getLines();
+    const clickedLine = lines.find((line) => {
+        const lineX = line.x + line.width;
+        const lineY = line.y - line.size;
+        const lineArea = { x: lineX, y: lineY };
+        return (clickedPos.x >= line.x - 10 && clickedPos.x <= lineArea.x + 15 &&
+            clickedPos.y <= line.y + 20 && clickedPos.y >= lineArea.y - 5);
+    })
+    gChosenLine = clickedLine;
+    return gChosenLine;
+}
+
+function getLines() {
+    return gMeme.lines;
+}
+
+function setLineDrag(isDrag) {
+    if (!gChosenLine) return;
+    gChosenLine.isDrag = isDrag
+}
+
+function moveLine(dx, dy) {
+    const line = gChosenLine;
+    line.x += dx
+    line.y += dy
 }

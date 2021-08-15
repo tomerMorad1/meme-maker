@@ -201,6 +201,10 @@
                 width: 250px;
                 height: 185px;
             }
+            
+            .save-btn {
+                /* border-bottom: 50px; */
+            }
             /* Footer */
             
             .main-footer {
@@ -418,8 +422,8 @@
             
             @media (min-width: 1520px) {
                 button {
-                    width: 6.75rem;
-                    height: 6.75rem;
+                    width: 5.75rem;
+                    height: 5.75rem;
                 }
                 .text-editor button img,
                 label img {
@@ -429,8 +433,8 @@
                 .text-editor {
                     border-radius: 1rem;
                     background-color: #19A59F;
-                    grid-template-columns: repeat(5, 1fr);
-                    gap: 37px;
+                    grid-template-columns: repeat(5, 100px);
+                    gap: 1;
                     padding: 0.688rem 1.125rem;
                 }
                 [name="text-edit"] {
@@ -440,5 +444,9 @@
                 }
                 .manu-btn {
                     display: none;
+                }
+                .canvas-container {
+                    width: 600px;
+                    height: 600px;
                 }
             }
